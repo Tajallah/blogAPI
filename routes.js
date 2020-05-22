@@ -13,7 +13,7 @@ module.exports = function (app, opts) {
   })
 
   app.get('/article', (req, res) => {
-    db.findById({req.body.id}, function (err, data) {
+    db.findById({id:req.body.id}, function (err, data) {
       if (err) res.send(err)
       res.send(data)
     })
@@ -42,7 +42,7 @@ module.exports = function (app, opts) {
 
   app.get('/configured', configured(opts))
 
-  router.post('/newArticle', (req, res) =>{
+  app.post('/newArticle', (req, res) =>{
   console.log("starting post")
   console.log(req)
   console.log("req :: ", req.body)

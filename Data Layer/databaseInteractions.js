@@ -11,15 +11,15 @@ db.once('open', function() {
   console.log('connected to database')
 });
 
-class dataFetcher {
+/*class dataFetcher {
   function getArticleByID() {
 
   }
-}
+}*
 
 /*Post.findOne({}, '', function (err, Post) {
   if (err) return handleError(err);
   console.log('<h1>%s</h1><br><br>%s<br><br><h2>%s<h2><br><br>%s', Post.title, Post.date, Post.description, Post.body);
 });*/
 
-module.exports = dataFetcher
+module.exports = db

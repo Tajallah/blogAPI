@@ -8,7 +8,8 @@ module.exports = function main (options, cb) {
   // Set default options
   const ready = cb || function () {}
   const opts = Object.assign({
-    // Default options
+    host:"localhost",
+    port:8888
   }, options)
 
   const logger = pino()
