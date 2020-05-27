@@ -13,20 +13,20 @@ module.exports = function (app, opts) {
   })
 
   app.get('/article', (req, res) => {
-    db.findById({id:req.body.id}, function (err, data) {
+    Post.findById({id:req.body.id}, function (err, data) {
       if (err) res.send(err)
       res.send(data)
     })
   })
 
   app.get('/article/search', (req, res) => {
-    db.find({description:req.body.query}, function (err, data) {
+    Post.find({description:req.body.query}, function (err, data) {
       if (err) res.send(err)
       res.send(data)
     })
   })
 
-  app.get('/article/search', (req, res) => {
+  app.get('/article/search', (req, res) => { //TODO: make this search loose
     db.find({category:req.body.query}, function (err, data) {
       if (err) res.send(err)
       res.send(data)
@@ -34,7 +34,7 @@ module.exports = function (app, opts) {
   })
 
   app.get('/test', (req, res) => {
-    db.findOne({}, '', function (err, data) {
+    Post.findOne({}, '', function (err, data) {
       if (err) return handleError(err)
       res.send(data)
     });

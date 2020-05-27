@@ -3,6 +3,7 @@ const express = require('express')
 const httpErrors = require('http-errors')
 const pino = require('pino')
 const pinoHttp = require('pino-http')
+const bodyParser = require('body-parser')
 
 module.exports = function main (options, cb) {
   // Set default options
@@ -41,8 +42,10 @@ module.exports = function main (options, cb) {
   process.on('unhandledRejection', unhandledError)
 
   // Create the express app
-  const app = express()
+  var app = express()
 
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json(/*{ type: 'application/json' }*/));
 
   // Common middleware
   // app.use(/* ... */)
