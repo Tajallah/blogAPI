@@ -19,15 +19,17 @@ module.exports = function (app, opts) {
     })
   })
 
-  app.get('/article/search', (req, res) => {
-    Post.find({description:req.body.query}, function (err, data) {
+  app.get('/article/search/description', (req, res) => {
+    let re = new RegExp(req.body.query)
+    Post.find({description:re}, function (err, data) {
       if (err) res.send(err)
       res.send(data)
     })
   })
 
-  app.get('/article/search', (req, res) => { //TODO: make this search loose
-    db.find({category:req.body.query}, function (err, data) {
+  app.get('/article/search/category', (req, res) => {
+    let re = new RegExp(req.body.query)
+    Post.find({category:re}, function (err, data) {
       if (err) res.send(err)
       res.send(data)
     })
