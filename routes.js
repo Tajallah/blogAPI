@@ -3,6 +3,7 @@ const Post = require('./Data Layer/models/Post')
 const simple = require('./handlers/simple')
 const configured = require('./handlers/configured')
 const db = require('./Data Layer/databaseInteractions')
+const { default: verifyEntry } = require('./keystuff')
 
 module.exports = function (app, opts) {
   // Setup routes, middleware, and handlers
@@ -47,6 +48,17 @@ module.exports = function (app, opts) {
   app.post('/newArticle', (req, res) =>{
   console.log("starting post")
   console.log(req)
+  const checkObject = JSON.stringify({
+    title:req.body.title,
+    category:req.body.category,
+    description:req.body.description,
+    body:req.body.body,
+  })
+  const signature = req.signature
+  if (signature == undefined) {
+    res.json({message: "No signature. Discarding"})
+  }
+  else if (verifyEntry(checkObject, signature))
   console.log("req :: ", req.body)
   const post = new Post({
     title: req.body.title,

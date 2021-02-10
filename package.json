@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "start": "./bin/app",
+    "start": "node ./bin/app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
@@ -15,6 +15,7 @@
     "express": "^4.17.1",
     "http-errors": "^1.7.3",
     "mongoose": "^5.9.13",
+    "node-rsa": "^1.1.1",
     "pino": "^6.2.1",
     "pino-http": "^5.1.0",
     "pino-pretty": "^4.0.0"
